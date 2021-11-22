@@ -1,4 +1,4 @@
-package com.nttdata.customerCredit;
+package com.nttdata.pagos;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,8 +1,8 @@
-package com.nttdata.customerCredit.infrestructure.res;
+package com.nttdata.pagos.infrestructure.res;
 
 
-import com.nttdata.customerCredit.domain.CustomerCredit;
-import com.nttdata.customerCredit.operations.CustomerCreditOperations;
+import com.nttdata.pagos.application.domain.Pagos;
+import com.nttdata.pagos.application.operations.CustomerCreditOperations;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -23,7 +23,7 @@ public class CustomerCreditController   {
 
 
     @GetMapping("list")
-    public Flux<CustomerCredit> getall() throws Exception{
+    public Flux<Pagos> getall() throws Exception{
         try {
             return customerCreditOperations.findAll();
         }catch (Exception e){
@@ -32,7 +32,7 @@ public class CustomerCreditController   {
     }
 
     @GetMapping("/{id}")
-    public Mono<CustomerCredit> getOne(@PathVariable Long id) throws Exception {
+    public Mono<Pagos> getOne(@PathVariable Long id) throws Exception {
         try {
             return customerCreditOperations.findById(id);
         }catch (Exception e){
@@ -41,7 +41,7 @@ public class CustomerCreditController   {
     }
 
     @PostMapping("add")
-    public Mono<CustomerCredit> save(@RequestBody CustomerCredit account) throws Exception {
+    public Mono<Pagos> save(@RequestBody Pagos account) throws Exception {
         try {
             return customerCreditOperations.save(account);
         }catch (Exception e){
@@ -50,7 +50,7 @@ public class CustomerCreditController   {
     }
 
     @PutMapping("/{id}")
-    public Mono<CustomerCredit> update(@PathVariable Long id, @RequestBody CustomerCredit account) throws Exception {
+    public Mono<Pagos> update(@PathVariable Long id, @RequestBody Pagos account) throws Exception {
         try {
             return customerCreditOperations.update(id , account);
         }catch (Exception e){

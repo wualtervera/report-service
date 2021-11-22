@@ -1,4 +1,4 @@
-package com.nttdata.customerCredit.infrestructure.model.dao;
+package com.nttdata.pagos.infrestructure.model.dao;
 
 
 import lombok.Data;
