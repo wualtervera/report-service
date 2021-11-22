@@ -6,16 +6,16 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
-
 @Data
 @Document("customerCredit")
 @NoArgsConstructor
-public class CustomerCreditDao {
+public class PagosDAO {
 
     @Id
     private Long id;
+    private Double input;
+    private Double outputs;
+    private String concept;
     private Long idCredit;
-    private Long idCustomer;
-    private LocalDate datetime;
+    private String datetime;
 }

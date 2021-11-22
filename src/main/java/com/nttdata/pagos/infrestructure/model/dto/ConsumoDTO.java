@@ -1,15 +1,10 @@
-package com.nttdata.pagos.domain;
-
+package com.nttdata.pagos.infrestructure.model.dto;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-public class Pagos {
-
+public class ConsumoDTO {
     private Long id;
-    private Double input;
     private Double outputs;
     private String concept;
     private Long idCredit;

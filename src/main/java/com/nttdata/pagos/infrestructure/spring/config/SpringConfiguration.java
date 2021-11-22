@@ -1,8 +1,7 @@
-package com.nttdata.customerCredit.infrestructure.spring.config;
+package com.nttdata.pagos.infrestructure.spring.config;
 
 
-import com.nttdata.customerCredit.infrestructure.service.CustomerCreditCrudService;
-import lombok.RequiredArgsConstructor;
+import com.nttdata.pagos.infrestructure.res.service.PagosCrudService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,8 +10,8 @@ public class SpringConfiguration {
 
 
     @Bean
-    public CustomerCreditCrudService customerCreditRepository(){
-        return new CustomerCreditCrudService();
+    public PagosCrudService pagosRepository(){
+        return new PagosCrudService();
 
     }
 }

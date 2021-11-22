@@ -3,6 +3,8 @@ package com.nttdata.pagos.application.impl;
 import com.nttdata.pagos.domain.Pagos;
 import com.nttdata.pagos.application.model.PagosRepository;
 import com.nttdata.pagos.application.operations.PagosOperations;
+import com.nttdata.pagos.infrestructure.model.dto.ConsumoDTO;
+import com.nttdata.pagos.infrestructure.model.dto.PagoDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -11,7 +13,7 @@ import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
-public class PagosImpl implements PagosOperations {
+public class PagosOperationsImpl implements PagosOperations {
 
 
     private final PagosRepository pagosRepository;
@@ -60,4 +62,5 @@ public class PagosImpl implements PagosOperations {
             throw new Exception(e.getMessage());
         }
     }
+
 }

@@ -1,10 +1,12 @@
 package com.nttdata.pagos.application.operations;
 
-import com.nttdata.pagos.application.domain.Pagos;
+import com.nttdata.pagos.domain.Pagos;
+import com.nttdata.pagos.infrestructure.model.dto.ConsumoDTO;
+import com.nttdata.pagos.infrestructure.model.dto.PagoDTO;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public interface CustomerCreditOperations {
+public interface PagosOperations {
 
     Flux<Pagos> findAll() throws Exception;
 
@@ -15,4 +17,5 @@ public interface CustomerCreditOperations {
     Mono<Pagos> update(Long id, Pagos pagos) throws Exception;
 
     Mono<Void> delete(Long id) throws Exception;
+
 }

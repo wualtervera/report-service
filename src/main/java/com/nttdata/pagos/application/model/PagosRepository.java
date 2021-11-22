@@ -1,10 +1,12 @@
-package com.nttdata.pagos.model;
+package com.nttdata.pagos.application.model;
 
-import com.nttdata.pagos.application.domain.Pagos;
+import com.nttdata.pagos.domain.Pagos;
+import com.nttdata.pagos.infrestructure.model.dto.ConsumoDTO;
+import com.nttdata.pagos.infrestructure.model.dto.PagoDTO;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public interface CustomerCreditRepository {
+public interface PagosRepository {
 
     Flux<Pagos> findAll();
 
@@ -15,4 +17,6 @@ public interface CustomerCreditRepository {
     Mono<Pagos> update(Long id, Pagos pagos);
 
     Mono<Void> delete(Long id);
+
+
 }
