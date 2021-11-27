@@ -1,15 +1,13 @@
 spring:
   application:
     name: report-service
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017/bootcamp
   cloud:
     config:
       enabled: true
       uri:
-        -http://localhost:8008
+        - http://localhost:8008
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/bootcamp
 
 #server.port=8007
-#spring.application.name = report-service
-#spring.data.mongodb.uri=mongodb://localhost:27017/bootcamp
