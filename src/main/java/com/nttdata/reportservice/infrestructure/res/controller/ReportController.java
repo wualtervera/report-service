@@ -18,27 +18,27 @@ public class ReportController {
     private final ReportOperations reportOperations;
 
 
-    @GetMapping("read")
+    @GetMapping("")
     public Flux<Report> getall(){
             return reportOperations.findAll();
     }
 
-    @GetMapping("read/{id}")
+    @GetMapping("/{id}")
     public Mono<Report> getOne(@PathVariable String id) throws Exception {
             return reportOperations.findById(id);
     }
 
-    @PostMapping("create")
+    @PostMapping("")
     public Mono<Report> save(@RequestBody Report account){
             return reportOperations.save(account);
     }
 
-    @PutMapping("update/{id}")
+    @PutMapping("/{id}")
     public Mono<Report> update(@PathVariable String id, @RequestBody Report account){
             return reportOperations.update(id , account);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/{id}")
     public Mono<Void> delete(@PathVariable String id){
             return reportOperations.delete(id);
     }
