@@ -3,6 +3,9 @@ package com.nttdata.reportservice.application.impl;
 import com.nttdata.reportservice.domain.Report;
 import com.nttdata.reportservice.application.model.ReportRepository;
 import com.nttdata.reportservice.application.operations.ReportOperations;
+import com.nttdata.reportservice.infrestructure.model.dto.AverageBalanceDto;
+import com.nttdata.reportservice.infrestructure.model.dto.CommissionProductDto;
+import com.nttdata.reportservice.infrestructure.model.dto.CommissionSearchDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -39,6 +42,21 @@ public class ReportOperationsImpl implements ReportOperations {
     @Override
     public Mono<Void> delete(String id){
             return reportRepository.delete(id);
+    }
+
+    @Override
+    public Mono<Report> saveAverageBalance(String idCustomer) {
+        return reportRepository.saveAverageBalance(idCustomer);
+    }
+
+    @Override
+    public Mono<AverageBalanceDto> getAverageBalance(String idCustomer) {
+        return reportRepository.getAverageBalance(idCustomer);
+    }
+
+    @Override
+    public Mono<CommissionProductDto> getCommissionProduct(CommissionSearchDto commissionSearchDto) {
+        return reportRepository.getCommissionProduct(commissionSearchDto);
     }
 
 }

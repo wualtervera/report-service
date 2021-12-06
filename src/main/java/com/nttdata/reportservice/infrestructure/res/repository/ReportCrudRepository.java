@@ -9,4 +9,5 @@ import reactor.core.publisher.Flux;
 
 @Repository
 public interface ReportCrudRepository extends ReactiveCrudRepository<ReportDao, String> {
+
 }
