@@ -14,6 +14,8 @@ import reactor.core.publisher.Mono;
 
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -69,7 +71,7 @@ public class ReportCrudService implements ReportRepository {
     public Mono<Report> saveAverageBalance(String idCustomer) {
         log.info("Entre a getReportSaldoProm - EN SERVICE");
 
-        return webClientService.getCredits(idCustomer)
+        return webClientService.getCreditsIdCustomer(idCustomer)
                 .collect(Collectors.summingDouble(CreditDto::getBalance))
                 .flatMap(saldo ->
                         webClientService.getCustomer(idCustomer)
@@ -93,7 +95,7 @@ public class ReportCrudService implements ReportRepository {
     //Devuelve cálculo de saldo promedio diario mensual - no guarda en db
     @Override
     public Mono<AverageBalanceDto> getAverageBalance(String idCustomer) {
-        return webClientService.getCredits(idCustomer)
+        return webClientService.getCreditsIdCustomer(idCustomer)
                 .collect(Collectors.summingDouble(CreditDto::getBalance))
                 .flatMap(saldo ->
                         webClientService.getCustomer(idCustomer)
@@ -123,6 +125,28 @@ public class ReportCrudService implements ReportRepository {
                                 .commissionProduct(Double.parseDouble(new DecimalFormat("####.00").format(commission)))
                                 .date(LocalDateTime.now().toLocalDate()).build())
                 );
+    }
+
+    //Reporte consolidado de productos de un cliente
+    @Override
+    public Mono<ConsolidatedReportDto> getConsolidated(String idCustomer) {
+        return webClientService.getCustomer(idCustomer)
+                .flatMap(c ->
+                        webClientService.getCreditsIdCustomer(c.getId()).collectList()
+                                .flatMap(listC ->
+                                        webClientService.getAccountsIdCustomer(c.getId()).collectList()
+                                                .flatMap(listA ->
+                                                        Mono.just(ConsolidatedReportDto.builder()
+                                                                .idCustomer(idCustomer)
+                                                                .dni(c.getDni())
+                                                                .nameCustomer(c.getName().concat(" " + c.getSurname()))
+                                                                .credit(listC)
+                                                                .account(listA)
+                                                                .date(LocalDateTime.now().toLocalDate()).build())
+                                                )
+                                )
+                );
+
     }
 
 

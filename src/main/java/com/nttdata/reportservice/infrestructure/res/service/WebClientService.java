@@ -16,7 +16,7 @@ public class WebClientService {
 
     WebClient webClient = WebClient.create("http://localhost:8080/api/v1");
 
-    public Flux<CreditDto> getCredits(String idCustomer) {
+    public Flux<CreditDto> getCreditsIdCustomer(String idCustomer) {
         log.info("Entre a getCredits - EN CREDITS SERVICE");
         return webClient.get()
                 .uri("/credit/customer/{idCustomer}", idCustomer)
@@ -33,12 +33,12 @@ public class WebClientService {
                 .bodyToMono(CreditDto.class);
     }
 
-    public Flux<CreditDto> getAccounts(String idCrdit) {
+    public Flux<AccountDto> getAccountsIdCustomer(String idCustomer) {
         return webClient.get()
-                .uri("/credit/customer/{idCrdit}", idCrdit)
+                .uri("/account/customer/{idCustomer}", idCustomer)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToFlux(CreditDto.class);
+                .bodyToFlux(AccountDto.class);
     }
 
     //Traendo datos otrs servicios relacionados con client

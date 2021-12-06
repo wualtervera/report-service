@@ -4,6 +4,7 @@ import com.nttdata.reportservice.domain.Report;
 import com.nttdata.reportservice.infrestructure.model.dto.AverageBalanceDto;
 import com.nttdata.reportservice.infrestructure.model.dto.CommissionProductDto;
 import com.nttdata.reportservice.infrestructure.model.dto.CommissionSearchDto;
+import com.nttdata.reportservice.infrestructure.model.dto.ConsolidatedReportDto;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -25,5 +26,6 @@ public interface ReportOperations {
 
     Mono<CommissionProductDto> getCommissionProduct(CommissionSearchDto commissionSearchDto);
 
+    Mono<ConsolidatedReportDto> getConsolidated(String idCustomer);
 
 }

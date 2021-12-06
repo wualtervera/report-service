@@ -6,6 +6,7 @@ import com.nttdata.reportservice.application.operations.ReportOperations;
 import com.nttdata.reportservice.infrestructure.model.dto.AverageBalanceDto;
 import com.nttdata.reportservice.infrestructure.model.dto.CommissionProductDto;
 import com.nttdata.reportservice.infrestructure.model.dto.CommissionSearchDto;
+import com.nttdata.reportservice.infrestructure.model.dto.ConsolidatedReportDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -57,6 +58,11 @@ public class ReportOperationsImpl implements ReportOperations {
     @Override
     public Mono<CommissionProductDto> getCommissionProduct(CommissionSearchDto commissionSearchDto) {
         return reportRepository.getCommissionProduct(commissionSearchDto);
+    }
+
+    @Override
+    public Mono<ConsolidatedReportDto> getConsolidated(String idCustomer) {
+        return reportRepository.getConsolidated(idCustomer);
     }
 
 }

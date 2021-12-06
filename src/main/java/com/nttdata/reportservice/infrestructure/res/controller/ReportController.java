@@ -3,10 +3,7 @@ package com.nttdata.reportservice.infrestructure.res.controller;
 
 import com.nttdata.reportservice.domain.Report;
 import com.nttdata.reportservice.application.operations.ReportOperations;
-import com.nttdata.reportservice.infrestructure.model.dto.AverageBalanceDto;
-import com.nttdata.reportservice.infrestructure.model.dto.CommissionProductDto;
-import com.nttdata.reportservice.infrestructure.model.dto.CommissionSearchDto;
-import com.nttdata.reportservice.infrestructure.model.dto.CreditDto;
+import com.nttdata.reportservice.infrestructure.model.dto.*;
 import com.nttdata.reportservice.infrestructure.res.service.WebClientService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -55,7 +52,7 @@ public class ReportController {
     @GetMapping("credits/{idCustomer}")
     public Flux<CreditDto> getRepo(@PathVariable String idCustomer){
         log.info("Entre a GER REPOS - CREDITS");
-        return webClientService.getCredits(idCustomer);
+        return webClientService.getCreditsIdCustomer(idCustomer);
     }
 
     //REPORTES
@@ -76,6 +73,12 @@ public class ReportController {
     @PostMapping("getCommission")
     public Mono<CommissionProductDto> getCommission(@RequestBody CommissionSearchDto commissionSearchDto){
         return reportOperations.getCommissionProduct(commissionSearchDto);
+    }
+
+    //Reporte de comisiones cobradas por las transacciones realizadas por cada producto en unrango de fecha
+    @GetMapping("getConsolidated/{idCustomer}")
+    public Mono<ConsolidatedReportDto> getConsolidated(@PathVariable String idCustomer){
+        return reportOperations.getConsolidated(idCustomer);
     }
 
 
